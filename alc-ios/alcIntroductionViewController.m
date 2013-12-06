@@ -7,6 +7,8 @@
 //
 
 #import "alcIntroductionViewController.h"
+#import "TestFlight.h"
+#define NSLog TFLog
 
 #define NUMBER_OF_PAGES 4
 
@@ -44,6 +46,7 @@
 
 - (void)placeViews
 {
+    [TestFlight passCheckpoint:@"INTRODUCTION_LOADED_VIEW"];
     // put a unicorn in the middle of page two, hidden
     self.unicorn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logoLanding"]];
     self.unicorn.center = self.view.center;
@@ -194,6 +197,7 @@
 }
 
 -(void)finishIntroToMainView {
+    
     [self dismissViewControllerAnimated:true completion:nil];
 }
 @end
