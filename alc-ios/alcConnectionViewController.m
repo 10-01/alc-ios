@@ -17,6 +17,8 @@
 #import "alcIntroductionViewController.h"
 #import "alcAppDelegate.h"
 #import "Preferences.h"
+#import "TestFlight.h"
+#define NSLog TFLog
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -55,7 +57,7 @@ NSString *kConnectionCellID = @"connectionResultCell";
     [self.connectionCollectionView addSubview:refreshControl];
     self.connectionCollectionView.alwaysBounceVertical = YES;
 
-    
+    [TestFlight passCheckpoint:@"LOADED_CONNECTIONS_IN_LIST"];
     
     // Fetching Records and saving it in "fetchedRecordsArray" object
     self.prefsArray = [appDelegate getPref];
@@ -194,6 +196,7 @@ NSString *kConnectionCellID = @"connectionResultCell";
 
 
 -(void)refreshView:(UIRefreshControl *)refresh{
+    [TestFlight passCheckpoint:@"USED_REFRESH_CONTROL"];
     static GTLServiceAlittlecloser *service = nil;
     if (!service) {
         service = [[GTLServiceAlittlecloser alloc] init];
@@ -222,6 +225,7 @@ NSString *kConnectionCellID = @"connectionResultCell";
 }
 
 -(void)reloadHomeViewController {
+    [TestFlight passCheckpoint:@"ADD_NAVIGATION_BACK_TO_CONNECTIONS_SUCCESSFUL"];
     static GTLServiceAlittlecloser *service = nil;
     if (!service) {
         service = [[GTLServiceAlittlecloser alloc] init];

@@ -13,6 +13,8 @@
 #import "alcPersonInfo.h"
 #import "MBProgressHUD.h"
 #import "alcFixOrientation.h"
+#import "TestFlight.h"
+#define NSLog TFLog
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -85,6 +87,8 @@
     
     mediaUI.delegate = delegate;
     
+    [TestFlight passCheckpoint:@"USER_LOADED_FROM_LIBRARY"];
+    
     [controller presentViewController: mediaUI animated: YES completion: nil];
     
     return YES;
@@ -120,6 +124,7 @@
         [_imageViewer initWithImage:_origImage];
         _selectImageLabel.text = @"";
         _submitButton.enabled = true;
+        [TestFlight passCheckpoint:@"USER_ADDED_MEDIA"];
         addConnectionObj.mediaPath = imagePath;
 //        addConnectionObj.mediaName = [info objectForKey:UIImagePickerController]
     }
@@ -150,6 +155,8 @@
     cameraUI.allowsEditing = NO;
     
     cameraUI.delegate = delegate;
+    
+    [TestFlight passCheckpoint:@"USER_TOOK_PICTURE"];
     
     [controller presentViewController: cameraUI animated: YES completion:nil];
     return YES;
@@ -216,6 +223,8 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{};
     
+    [TestFlight passCheckpoint:@"USER_SUBMITTED_ADD_CONNECTION"];
+    
     [manager POST:@"https://pivotal-essence-333.appspot.com/fileupload" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileURL:imageUrl name:@"file" error:nil];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -237,6 +246,8 @@
         getparams.longitude =  [NSNumber numberWithFloat:addConnectionObj.mapLong ];
         getparams.primaryMedia = randomOutPath;
         
+        [TestFlight passCheckpoint:@"ADD_IMAGE_UPLOAD_SUCCESSFUL"];
+        
         GTLQueryAlittlecloser *query = [GTLQueryAlittlecloser queryForConnectionsAddWithObject:getparams];
         
         [service executeQuery:query completionHandler:^(GTLServiceTicket *ticket, GTLAlittlecloserWebAlittlecloserApiMessagesConnectionAddResponse *object, NSError *error) {
@@ -245,8 +256,10 @@
             
             if ([message hasPrefix:@"user"]){
                 _selectImageLabel.text = @"Maximum 5 outstanding requests per user. Visit your profile on the web to delete one.";
+                [TestFlight passCheckpoint:@"USER_HAD_5_CONNECTIONS"];
                 }
             else{
+                [TestFlight passCheckpoint:@"SUCCESSFULLY_ADDED_CONNECTION"];
                 addConnectionObj.resetAdd = YES;
                 [self.navigationController popViewControllerAnimated:NO];
             };

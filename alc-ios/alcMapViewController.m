@@ -13,7 +13,8 @@
 #import "GTLAlittlecloser.h"
 #import "alcConnectionObjectViewController.h"
 #import "MBProgressHUD.h"
-
+#import "TestFlight.h"
+#define NSLog TFLog
 
 @interface alcMapViewController ()
 @property(nonatomic)MKMapView *mapView;
@@ -35,6 +36,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [TestFlight passCheckpoint:@"MAP_LOADED_VIEW"];
+    
     CGFloat width = CGRectGetWidth(self.view.bounds);
     CGFloat height = CGRectGetHeight(self.view.bounds);
     UIView *mapContainer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, width, height)];
@@ -60,6 +63,7 @@
         
         [service executeQuery:query completionHandler:^(GTLServiceTicket *ticket, GTLAlittlecloserWebAlittlecloserApiMessagesConnectionListResponse *object, NSError *error) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [TestFlight passCheckpoint:@"MAP_CONNECTIONS_LOADED"];
             NSArray *items = [object connections];
             
             alcActiveConnection *activeObj=[alcActiveConnection getInstance];
@@ -124,7 +128,7 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)annotationView{
     UIButton * disclosureButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    
+    [TestFlight passCheckpoint:@"MAP_CLICKED_POINT"];
     [disclosureButton addTarget:self
                          action:@selector(presentMoreInfo)
                forControlEvents:UIControlEventTouchUpInside];

@@ -8,6 +8,8 @@
 
 #import "alcAddMapViewController.h"
 #import "alcAddConnectionObject.h"
+#import "TestFlight.h"
+#define NSLog TFLog
 
 @interface alcAddMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *addMap;
@@ -63,6 +65,7 @@
     addConnectionObj.mapLong = touchMapCoordinate.longitude;
     
     _nextButton.enabled = true;
+    [TestFlight passCheckpoint:@"USER_ADDED_POINT_TO_MAP"];
     
     MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
     annot.coordinate = touchMapCoordinate;
@@ -74,7 +77,9 @@
     alcAddConnectionObject *addConnectionObj=[alcAddConnectionObject getInstance];
     
     if (addConnectionObj.resetAdd){
+        [TestFlight passCheckpoint:@"ADD_NAVIGATION_BACK_TO_MAP_SUCCESSFUL"];
         [self.navigationController popToRootViewControllerAnimated:NO];
+        
     }
 }
 @end

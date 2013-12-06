@@ -7,6 +7,7 @@
 //
 
 #import "alcAppDelegate.h"
+#import "TestFlight.h"
 
 #pragma mark -
 @interface alcAppDelegate()
@@ -93,6 +94,9 @@ static alcAppDelegate *_sharedDelegate = nil;
     // Override point for customization after application launch.
     // Set shared delegate
     _sharedDelegate = self;
+    //    Testflight Config
+    [TestFlight takeOff:@"592dea31-cbe7-4104-9654-ae8efcfad2ef"];
+
     
     return YES;
 }

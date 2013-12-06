@@ -9,6 +9,8 @@
 #import "alcConnectionObjectViewController.h"
 #import "GTLAlittlecloser.h"
 #import "alcActiveConnection.h"
+#import "TestFlight.h"
+#define NSLog TFLog
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -32,6 +34,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [TestFlight passCheckpoint:@"LOADED_INDIVIDUAL_CONNECTION"];
     _photoNum = 0;
     alcActiveConnection *activeObj=[alcActiveConnection getInstance];
     
@@ -86,9 +89,11 @@
 - (void)handleSwipe:(UISwipeGestureRecognizer *)swipe {
     
     if (swipe.direction == UISwipeGestureRecognizerDirectionDown) {
+        [TestFlight passCheckpoint:@"LOADED_INDIVIDUAL_CONNECTION_SWIPE_DOWN"];
         [self dismissViewControllerAnimated:true completion:nil];
     }
     else if (swipe.direction == UISwipeGestureRecognizerDirectionLeft){
+        [TestFlight passCheckpoint:@"LOADED_INDIVIDUAL_CONNECTION_SWIPE_LEFT"];
         _photoNum = _photoNum+1;
         alcActiveConnection *activeObj=[alcActiveConnection getInstance];
         
@@ -127,6 +132,7 @@
         [imageView addGestureRecognizer:swipeRight];
     }
     else if (swipe.direction == UISwipeGestureRecognizerDirectionRight){
+        [TestFlight passCheckpoint:@"LOADED_INDIVIDUAL_CONNECTION_SWIPE_RIGHT"];
         _photoNum = _photoNum-1;
         alcActiveConnection *activeObj=[alcActiveConnection getInstance];
         

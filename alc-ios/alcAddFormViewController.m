@@ -12,6 +12,8 @@
 #import "alcLoginViewController.h"
 #import "alcPersonInfo.h"
 #import "alcAddConnectionObject.h"
+#import "TestFlight.h"
+#define NSLog TFLog
 
 @interface alcAddFormViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *formTable;
@@ -147,6 +149,7 @@
 	}
     if (addConnectionObj.title != nil && addConnectionObj.recipientName != nil && addConnectionObj.giftDescription != nil) {
         _nextButton.enabled = true;
+        [TestFlight passCheckpoint:@"USER_FILLED_OUT_ADD_FORM"];
     }
 }
 
@@ -159,6 +162,7 @@
         _nextButton.enabled = false;
         
         [_formTable reloadData];
+        [TestFlight passCheckpoint:@"ADD_NAVIGATION_BACK_TO_FORM_SUCCESSFUL"];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHomeViewController"
                                                             object:nil

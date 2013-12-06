@@ -13,6 +13,8 @@
 #import "GTMHTTPFetcherLogging.h"
 #import "GTLAlittlecloser.h"
 #import "alcPersonInfo.h"
+#import "TestFlight.h"
+#define NSLog TFLog
 
 @interface alcLoginViewController ()
 - (IBAction)signupButton:(id)sender;
@@ -67,6 +69,7 @@
     _webview.delegate = self;
     [_webview loadRequest:nsrequest];
     [self.view addSubview:_webview];
+    [TestFlight passCheckpoint:@"USER_LAUNCHED_SIGNUP"];
     _closeSignupButton.alpha = 1;
     
 }
@@ -124,6 +127,7 @@
             }
             personInfoObj.api = apikey;
             personInfoObj.loggedIn = [NSNumber numberWithInt:1];;
+            [TestFlight passCheckpoint:@"USER_LOGGED_IN"];
             [self dismissViewControllerAnimated:true completion:nil];
         }
         else{

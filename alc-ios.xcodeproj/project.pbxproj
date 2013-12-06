@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BD43037E184FE71A0036549A /* alcFixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = BD43037D184FE71A0036549A /* alcFixOrientation.m */; };
+		BD430386185179E00036549A /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD430380185179E00036549A /* libTestFlight.a */; };
+		BD430387185179E00036549A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BD430381185179E00036549A /* README.md */; };
+		BD430388185179E00036549A /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = BD430382185179E00036549A /* release_notes.md */; };
+		BD43038A18517A020036549A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD43038918517A020036549A /* libz.dylib */; };
 		BD9236BF1846D2E100D8BDC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9236BE1846D2E100D8BDC1 /* Foundation.framework */; };
 		BD9236C11846D2E100D8BDC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9236C01846D2E100D8BDC1 /* CoreGraphics.framework */; };
 		BD9236C31846D2E100D8BDC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9236C21846D2E100D8BDC1 /* UIKit.framework */; };
@@ -116,6 +120,13 @@
 		49DF18CB848E4CCB9F5D1922 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD43037C184FE71A0036549A /* alcFixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alcFixOrientation.h; sourceTree = "<group>"; };
 		BD43037D184FE71A0036549A /* alcFixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alcFixOrientation.m; sourceTree = "<group>"; };
+		BD430380185179E00036549A /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		BD430381185179E00036549A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		BD430382185179E00036549A /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		BD430383185179E00036549A /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		BD430384185179E00036549A /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
+		BD430385185179E00036549A /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		BD43038918517A020036549A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BD9236BB1846D2E100D8BDC1 /* alc-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "alc-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9236BE1846D2E100D8BDC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BD9236C01846D2E100D8BDC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -292,11 +303,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD43038A18517A020036549A /* libz.dylib in Frameworks */,
 				BDCF3557184EB18B003ED63E /* CoreMedia.framework in Frameworks */,
 				BDCF3556184EB184003ED63E /* MediaPlayer.framework in Frameworks */,
 				BD9238151847331600D8BDC1 /* CoreLocation.framework in Frameworks */,
 				BD92381318472BD200D8BDC1 /* MapKit.framework in Frameworks */,
 				BD9236C11846D2E100D8BDC1 /* CoreGraphics.framework in Frameworks */,
+				BD430386185179E00036549A /* libTestFlight.a in Frameworks */,
 				BD9236C31846D2E100D8BDC1 /* UIKit.framework in Frameworks */,
 				BD9236BF1846D2E100D8BDC1 /* Foundation.framework in Frameworks */,
 				BD92381E1847D63100D8BDC1 /* CoreData.framework in Frameworks */,
@@ -317,6 +330,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD43037F185179E00036549A /* testflight */ = {
+			isa = PBXGroup;
+			children = (
+				BD430380185179E00036549A /* libTestFlight.a */,
+				BD430381185179E00036549A /* README.md */,
+				BD430382185179E00036549A /* release_notes.md */,
+				BD430383185179E00036549A /* TestFlight+AsyncLogging.h */,
+				BD430384185179E00036549A /* TestFlight+ManualSessions.h */,
+				BD430385185179E00036549A /* TestFlight.h */,
+			);
+			path = testflight;
+			sourceTree = "<group>";
+		};
 		BD9236B21846D2E100D8BDC1 = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +366,7 @@
 		BD9236BD1846D2E100D8BDC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD43038918517A020036549A /* libz.dylib */,
 				BDCF3555184EB184003ED63E /* MediaPlayer.framework */,
 				BD9238251847D79B00D8BDC1 /* CoreMedia.framework */,
 				BD9238231847D77B00D8BDC1 /* QuartzCore.framework */,
@@ -360,6 +387,7 @@
 		BD9236C41846D2E100D8BDC1 /* alc-ios */ = {
 			isa = PBXGroup;
 			children = (
+				BD43037F185179E00036549A /* testflight */,
 				BD92382D1847DD8400D8BDC1 /* add */,
 				BD9238191847D05900D8BDC1 /* introduction */,
 				BD92381118472A6900D8BDC1 /* map */,
@@ -682,9 +710,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD430387185179E00036549A /* README.md in Resources */,
 				BD9237491846DAC000D8BDC1 /* GTMOAuth2ViewTouch.xib in Resources */,
 				BD9236D51846D2E100D8BDC1 /* Main_iPad.storyboard in Resources */,
 				BD9236DD1846D2E100D8BDC1 /* Images.xcassets in Resources */,
+				BD430388185179E00036549A /* release_notes.md in Resources */,
 				BD9236D21846D2E100D8BDC1 /* Main_iPhone.storyboard in Resources */,
 				BD9236C91846D2E100D8BDC1 /* InfoPlist.strings in Resources */,
 			);
@@ -953,6 +983,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "alc-ios/alc-ios-Prefix.pch";
 				INFOPLIST_FILE = "alc-ios/alc-ios-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/hstrauss/Documents/alc-ios/alc-ios/testflight",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -971,6 +1005,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "alc-ios/alc-ios-Prefix.pch";
 				INFOPLIST_FILE = "alc-ios/alc-ios-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/hstrauss/Documents/alc-ios/alc-ios/testflight",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
