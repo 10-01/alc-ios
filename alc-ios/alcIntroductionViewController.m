@@ -18,6 +18,12 @@
 @interface alcIntroductionViewController ()
 @property (strong, nonatomic) UIImageView *wordmark;
 @property (strong, nonatomic) UIImageView *unicorn;
+@property (strong, nonatomic) UIImageView *bg1;
+@property (strong, nonatomic) UIImageView *bg2;
+@property (strong, nonatomic) UIImageView *bg3;
+@property (strong, nonatomic) UIImageView *bg4;
+@property (strong, nonatomic) UIImageView *gift;
+@property (strong, nonatomic) UIImageView *social;
 @property (strong, nonatomic) UILabel *lastLabel;
 
 @end
@@ -47,19 +53,63 @@
 - (void)placeViews
 {
     [TestFlight passCheckpoint:@"INTRODUCTION_LOADED_VIEW"];
+    
+    
+    // background1
+    self.bg1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg1"]];
+    self.bg1.center = self.view.center;
+    self.bg1.frame = CGRectOffset(
+                                  self.bg1.frame,
+                                  0,
+                                  0
+                                  );
+    [self.scrollView addSubview:self.bg1];
+    
+    // background2
+    self.bg2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg2"]];
+    self.bg2.center = self.view.center;
+    self.bg2.frame = CGRectOffset(
+                                  self.bg2.frame,
+                                  self.view.frame.size.width,
+                                  0
+                                  );
+    [self.scrollView addSubview:self.bg2];
+    
+    // background3
+    self.bg3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg3"]];
+    self.bg3.center = self.view.center;
+    self.bg3.frame = CGRectOffset(
+                                  self.bg3.frame,
+                                  self.view.frame.size.width*2,
+                                  0
+                                  );
+    [self.scrollView addSubview:self.bg3];
+    
+    // background4
+    self.bg4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg4"]];
+    self.bg4.center = self.view.center;
+    self.bg4.frame = CGRectOffset(
+                                  self.bg4.frame,
+                                  self.view.frame.size.width*3,
+                                  0
+                                  );
+    [self.scrollView addSubview:self.bg4];
+    
+    
+    
     // put a unicorn in the middle of page two, hidden
     self.unicorn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logoLanding"]];
     self.unicorn.center = self.view.center;
     self.unicorn.frame = CGRectOffset(
                                       self.unicorn.frame,
                                       0,
-                                      self.view.frame.size.height/2 - 180
+                                      self.view.frame.size.height/2 - 80
                                       );
     self.unicorn.alpha = 1.0f;
     [self.scrollView addSubview:self.unicorn];
     
     // put a logo on top of it
-    self.wordmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logoLanding"]];
+    self.wordmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"us"]];
     self.wordmark.center = self.view.center;
     self.wordmark.frame = CGRectOffset(
                                        self.wordmark.frame,
@@ -68,80 +118,200 @@
                                        );
     [self.scrollView addSubview:self.wordmark];
     
+    // gift
+    self.gift = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gift"]];
+    self.gift.center = self.view.center;
+    self.gift.frame = CGRectOffset(
+                                  self.gift.frame,
+                                  self.view.frame.size.width*2,
+                                  -40
+                                  );
+    [self.scrollView addSubview:self.gift];
+    
+    // gift
+    self.social = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"social"]];
+    self.social.center = self.view.center;
+    self.social.frame = CGRectOffset(
+                                   self.social.frame,
+                                   self.view.frame.size.width*3,
+                                   0
+                                   );
+    [self.scrollView addSubview:self.social];
+    
+    
+    
+//    FIRST PAGE
     UILabel *firstPageText = [[UILabel alloc] init];
-    firstPageText.text = @"Welcome to ALC";
-    firstPageText.textColor = [UIColor colorWithRed:0xE8/255.0f
-                                              green:0x49/255.0f
-                                               blue:0x24/255.0f alpha:1];
+    firstPageText.font = [UIFont systemFontOfSize:28];
+    firstPageText.text = @"Narrowing the Distance";
+    firstPageText.textColor = [UIColor colorWithRed:0xb6/255.0f
+                                              green:0xe2/255.0f
+                                               blue:0xe9/255.0f alpha:1];
     
     [firstPageText sizeToFit];
     firstPageText.center = self.view.center;
-    firstPageText.frame = CGRectOffset(firstPageText.frame, 0, -self.view.frame.size.height/2 + 60);
+    
+    firstPageText.frame = CGRectOffset(firstPageText.frame, 0, -self.view.frame.size.height/2 + 200);
+    
+    UILabel *firstPageTextSub = [[UILabel alloc] init];
+    firstPageTextSub.font = [UIFont systemFontOfSize:17];
+    firstPageTextSub.text = @"between you and those you care about";
+    firstPageTextSub.textColor = [UIColor colorWithRed:0xf3/255.0f
+                                                 green:0x7a/255.0f
+                                                  blue:0x62/255.0f alpha:1];
+    
+    [firstPageTextSub sizeToFit];
+    firstPageTextSub.center = self.view.center;
+    firstPageTextSub.frame = CGRectOffset(firstPageTextSub.frame, 0, -self.view.frame.size.height/2 + 230);
     
     
-    UILabel *firstPageDesc = [[UILabel alloc] init];
-    firstPageDesc.text = @"Providing an unexpected gift at an unexpected time.";
-    firstPageDesc.textColor = [UIColor colorWithRed:0xE8/255.0f
-                                              green:0x49/255.0f
-                                               blue:0x24/255.0f alpha:1];
-    
-    [firstPageDesc sizeToFit];
-    firstPageDesc.center = self.view.center;
-    firstPageDesc.frame = CGRectOffset(firstPageText.frame, 0, -self.view.frame.size.height/2 + 120);
-
-    [self.scrollView addSubview:firstPageDesc];
-    
-    
-    UIButton *skipIntro = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [skipIntro addTarget:self
-                  action:@selector(finishIntroToMainView)
-        forControlEvents:UIControlEventTouchDown];
-    [skipIntro setTitle:@"Skip" forState:UIControlStateNormal];
-    [skipIntro sizeToFit];
-    skipIntro.center = self.view.center;
-    skipIntro.frame = CGRectOffset(skipIntro.frame, xForPage(1), self.view.frame.size.height/2 - 60);
-    [self.scrollView addSubview:skipIntro];
+//    UILabel *firstPageDesc = [[UILabel alloc] init];
+//    firstPageDesc.text = @"Providing an unexpected gift at an unexpected time.";
+//    firstPageDesc.textColor = [UIColor whiteColor];
+//    
+//    [firstPageDesc sizeToFit];
+//    firstPageDesc.center = self.view.center;
+//    firstPageDesc.frame = CGRectOffset(firstPageDesc.frame, 0, -self.view.frame.size.height/2 + 100);
+//
+//    [self.scrollView addSubview:firstPageDesc];
     
     [self.scrollView addSubview:firstPageText];
+    [self.scrollView addSubview:firstPageTextSub];
+    
+//    SECOND PAGE
     
     UILabel *secondPageText = [[UILabel alloc] init];
+    secondPageText.font = [UIFont systemFontOfSize:28];
     secondPageText.text = @"Locate";
-    secondPageText.textColor = [UIColor colorWithRed:0xE8/255.0f
-                                              green:0x49/255.0f
-                                               blue:0x24/255.0f alpha:1];
+    secondPageText.textColor = [UIColor colorWithRed:0xf3/255.0f
+                                               green:0x7a/255.0f
+                                                blue:0x62/255.0f alpha:1];
     [secondPageText sizeToFit];
     secondPageText.center = self.view.center;
     secondPageText.frame = CGRectOffset(secondPageText.frame, xForPage(2), -self.view.frame.size.height/2 + 60);
     [self.scrollView addSubview:secondPageText];
     
+    UILabel *secondPageTextDesc = [[UILabel alloc] init];
+    secondPageTextDesc.lineBreakMode = NSLineBreakByWordWrapping;
+    secondPageTextDesc.numberOfLines = 2;
+    secondPageTextDesc.textAlignment= UITextAlignmentCenter;
+    secondPageTextDesc.text = @"Choose the location of a loved one";
+    secondPageTextDesc.textColor = [UIColor whiteColor];
+    [secondPageTextDesc sizeToFit];
+    secondPageTextDesc.center = self.view.center;
+    secondPageTextDesc.frame = CGRectOffset(secondPageTextDesc.frame, xForPage(2), -self.view.frame.size.height/2 + 120);
+    [self.scrollView addSubview:secondPageTextDesc];
+    UILabel *secondPageTextDesc2 = [[UILabel alloc] init];
+    secondPageTextDesc2.lineBreakMode = NSLineBreakByWordWrapping;
+    secondPageTextDesc2.numberOfLines = 2;
+    secondPageTextDesc2.textAlignment= UITextAlignmentCenter;
+    secondPageTextDesc2.text = @"whom you'd like us to surprise";
+    secondPageTextDesc2.textColor = [UIColor whiteColor];
+    [secondPageTextDesc2 sizeToFit];
+    secondPageTextDesc2.center = self.view.center;
+    secondPageTextDesc2.frame = CGRectOffset(secondPageTextDesc2.frame, xForPage(2), -self.view.frame.size.height/2 + 140);
+    [self.scrollView addSubview:secondPageTextDesc2];
+    UILabel *secondPageTextDesc3 = [[UILabel alloc] init];
+    secondPageTextDesc3.lineBreakMode = NSLineBreakByWordWrapping;
+    secondPageTextDesc3.numberOfLines = 2;
+    secondPageTextDesc3.textAlignment= UITextAlignmentCenter;
+    secondPageTextDesc3.text = @"with an unexpected gift";
+    secondPageTextDesc3.textColor = [UIColor whiteColor];
+    [secondPageTextDesc3 sizeToFit];
+    secondPageTextDesc3.center = self.view.center;
+    secondPageTextDesc3.frame = CGRectOffset(secondPageTextDesc3.frame, xForPage(2), -self.view.frame.size.height/2 + 160);
+    [self.scrollView addSubview:secondPageTextDesc3];
+    
+    
+//    THIRD_PAGE
+    
     UILabel *thirdPageText = [[UILabel alloc] init];
+    thirdPageText.font = [UIFont systemFontOfSize:28];
     thirdPageText.text = @"Select";
-    thirdPageText.textColor = [UIColor colorWithRed:0xE8/255.0f
-                                               green:0x49/255.0f
-                                                blue:0x24/255.0f alpha:1];
+    thirdPageText.textColor = [UIColor colorWithRed:0xf3/255.0f
+                                              green:0x7a/255.0f
+                                               blue:0x62/255.0f alpha:1];
     [thirdPageText sizeToFit];
     thirdPageText.center = self.view.center;
     thirdPageText.frame = CGRectOffset(thirdPageText.frame, xForPage(3), -self.view.frame.size.height/2 + 60);
     [self.scrollView addSubview:thirdPageText];
     
+    UILabel *thirdPageTextDesc = [[UILabel alloc] init];
+    thirdPageTextDesc.text = @"Fill out a connection request of the";
+    thirdPageTextDesc.lineBreakMode = NSLineBreakByWordWrapping;
+    thirdPageTextDesc.numberOfLines = 2;
+    thirdPageTextDesc.textAlignment= UITextAlignmentCenter;
+    thirdPageTextDesc.textColor = [UIColor whiteColor];
+    [thirdPageTextDesc sizeToFit];
+    thirdPageTextDesc.center = self.view.center;
+    thirdPageTextDesc.frame = CGRectOffset(thirdPageTextDesc.frame, xForPage(3), -self.view.frame.size.height/2 + 120);
+    [self.scrollView addSubview:thirdPageTextDesc];
+    UILabel *thirdPageTextDesc2 = [[UILabel alloc] init];
+    thirdPageTextDesc2.text = @"gift you’d like us to bring to them";
+    thirdPageTextDesc2.lineBreakMode = NSLineBreakByWordWrapping;
+    thirdPageTextDesc2.numberOfLines = 2;
+    thirdPageTextDesc2.textAlignment= UITextAlignmentCenter;
+    thirdPageTextDesc2.textColor = [UIColor whiteColor];
+    [thirdPageTextDesc2 sizeToFit];
+    thirdPageTextDesc2.center = self.view.center;
+    thirdPageTextDesc2.frame = CGRectOffset(thirdPageTextDesc2.frame, xForPage(3), -self.view.frame.size.height/2 + 140);
+    [self.scrollView addSubview:thirdPageTextDesc2];
+    
+    
+//    FOURTH PAGE
+    
     UILabel *fourthPageText = [[UILabel alloc] init];
-    fourthPageText.text = @"Share";
-    fourthPageText.textColor = [UIColor colorWithRed:0xE8/255.0f
-                                               green:0x49/255.0f
-                                                blue:0x24/255.0f alpha:1];
+    fourthPageText.font = [UIFont systemFontOfSize:28];
+    fourthPageText.text = @"Enjoy";
+    fourthPageText.textColor = [UIColor colorWithRed:0xf3/255.0f
+                                               green:0x7a/255.0f
+                                                blue:0x62/255.0f alpha:1];
     [fourthPageText sizeToFit];
     fourthPageText.center = self.view.center;
     fourthPageText.frame = CGRectOffset(fourthPageText.frame, xForPage(4), -self.view.frame.size.height/2 + 60);
+    
+    UILabel *fourthPageTextDesc = [[UILabel alloc] init];
+    fourthPageTextDesc.text = @"Watch the video, view the pics";
+    fourthPageTextDesc.lineBreakMode = NSLineBreakByWordWrapping;
+    fourthPageTextDesc.numberOfLines = 2;
+    fourthPageTextDesc.textAlignment= UITextAlignmentCenter;
+    fourthPageTextDesc.textColor = [UIColor whiteColor];
+    [fourthPageTextDesc sizeToFit];
+    fourthPageTextDesc.center = self.view.center;
+    fourthPageTextDesc.frame = CGRectOffset(fourthPageTextDesc.frame, xForPage(4), -self.view.frame.size.height/2 + 120);
+    UILabel *fourthPageTextDesc2 = [[UILabel alloc] init];
+    fourthPageTextDesc2.text = @"and read our post to see how they ";
+    fourthPageTextDesc2.lineBreakMode = NSLineBreakByWordWrapping;
+    fourthPageTextDesc2.numberOfLines = 2;
+    fourthPageTextDesc2.textAlignment= UITextAlignmentCenter;
+    fourthPageTextDesc2.textColor = [UIColor whiteColor];
+    [fourthPageTextDesc2 sizeToFit];
+    fourthPageTextDesc2.center = self.view.center;
+    fourthPageTextDesc2.frame = CGRectOffset(fourthPageTextDesc2.frame, xForPage(4), -self.view.frame.size.height/2 + 140);
+    UILabel *fourthPageTextDesc3 = [[UILabel alloc] init];
+    fourthPageTextDesc3.text = @"reacted then share it!";
+    fourthPageTextDesc3.lineBreakMode = NSLineBreakByWordWrapping;
+    fourthPageTextDesc3.numberOfLines = 2;
+    fourthPageTextDesc3.textAlignment= UITextAlignmentCenter;
+    fourthPageTextDesc3.textColor = [UIColor whiteColor];
+    [fourthPageTextDesc3 sizeToFit];
+    fourthPageTextDesc3.center = self.view.center;
+    fourthPageTextDesc3.frame = CGRectOffset(fourthPageTextDesc3.frame, xForPage(4), -self.view.frame.size.height/2 + 160);
+    
+    
     UIButton *closeIntro = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [closeIntro addTarget:self
                    action:@selector(finishIntroToMainView)
          forControlEvents:UIControlEventTouchDown];
-    [closeIntro setTitle:@"Enjoy" forState:UIControlStateNormal];
+    [closeIntro setTitle:@"Check out some connections" forState:UIControlStateNormal];
     [closeIntro sizeToFit];
     closeIntro.center = self.view.center;
     closeIntro.frame = CGRectOffset(closeIntro.frame, xForPage(4), self.view.frame.size.height/2 - 60);
     [self.scrollView addSubview:closeIntro];
     [self.scrollView addSubview:fourthPageText];
+    [self.scrollView addSubview:fourthPageTextDesc];
+    [self.scrollView addSubview:fourthPageTextDesc2];
+    [self.scrollView addSubview:fourthPageTextDesc3];
     
     self.lastLabel = fourthPageText;
 }

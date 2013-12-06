@@ -20,7 +20,7 @@
 		BD9236CF1846D2E100D8BDC1 /* alcAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9236CE1846D2E100D8BDC1 /* alcAppDelegate.m */; };
 		BD9236D21846D2E100D8BDC1 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9236D01846D2E100D8BDC1 /* Main_iPhone.storyboard */; };
 		BD9236D51846D2E100D8BDC1 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD9236D31846D2E100D8BDC1 /* Main_iPad.storyboard */; };
-		BD9236DD1846D2E100D8BDC1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD9236DC1846D2E100D8BDC1 /* Images.xcassets */; };
+		BD9236DD1846D2E100D8BDC1 /* bg1.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD9236DC1846D2E100D8BDC1 /* bg1.xcassets */; };
 		BD9236E41846D2E100D8BDC1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9236E31846D2E100D8BDC1 /* XCTest.framework */; };
 		BD9236E51846D2E100D8BDC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9236BE1846D2E100D8BDC1 /* Foundation.framework */; };
 		BD9236E61846D2E100D8BDC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9236C21846D2E100D8BDC1 /* UIKit.framework */; };
@@ -139,7 +139,7 @@
 		BD9236CE1846D2E100D8BDC1 /* alcAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = alcAppDelegate.m; sourceTree = "<group>"; };
 		BD9236D11846D2E100D8BDC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		BD9236D41846D2E100D8BDC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		BD9236DC1846D2E100D8BDC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BD9236DC1846D2E100D8BDC1 /* bg1.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = bg1.xcassets; sourceTree = "<group>"; };
 		BD9236E21846D2E100D8BDC1 /* alc-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "alc-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD9236E31846D2E100D8BDC1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BD9236EB1846D2E100D8BDC1 /* alc-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "alc-iosTests-Info.plist"; sourceTree = "<group>"; };
@@ -399,7 +399,7 @@
 				BD9236CE1846D2E100D8BDC1 /* alcAppDelegate.m */,
 				BD9236D01846D2E100D8BDC1 /* Main_iPhone.storyboard */,
 				BD9236D31846D2E100D8BDC1 /* Main_iPad.storyboard */,
-				BD9236DC1846D2E100D8BDC1 /* Images.xcassets */,
+				BD9236DC1846D2E100D8BDC1 /* bg1.xcassets */,
 				BD9236C51846D2E100D8BDC1 /* Supporting Files */,
 				BD43037C184FE71A0036549A /* alcFixOrientation.h */,
 				BD43037D184FE71A0036549A /* alcFixOrientation.m */,
@@ -713,7 +713,7 @@
 				BD430387185179E00036549A /* README.md in Resources */,
 				BD9237491846DAC000D8BDC1 /* GTMOAuth2ViewTouch.xib in Resources */,
 				BD9236D51846D2E100D8BDC1 /* Main_iPad.storyboard in Resources */,
-				BD9236DD1846D2E100D8BDC1 /* Images.xcassets in Resources */,
+				BD9236DD1846D2E100D8BDC1 /* bg1.xcassets in Resources */,
 				BD430388185179E00036549A /* release_notes.md in Resources */,
 				BD9236D21846D2E100D8BDC1 /* Main_iPhone.storyboard in Resources */,
 				BD9236C91846D2E100D8BDC1 /* InfoPlist.strings in Resources */,

@@ -16,6 +16,7 @@
 
 @interface alcConnectionObjectViewController ()
 @property(nonatomic)NSInteger photoNum;
+@property(nonatomic)UITableView *connectionDetails;
 
 @end
 
@@ -70,12 +71,12 @@
     
     
 //    Add text for the connection
-    UITableView *connectionDetails = [[UITableView alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height/2 +40) style:UITableViewStyleGrouped];
-    connectionDetails.delegate = self;
-    connectionDetails.dataSource = self;
-    connectionDetails.backgroundColor = [UIColor whiteColor];
-    connectionDetails.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 0.01f)];
-    [self.view addSubview:connectionDetails];
+    _connectionDetails = [[UITableView alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height/2 +40) style:UITableViewStyleGrouped];
+    _connectionDetails.delegate = self;
+    _connectionDetails.dataSource = self;
+    _connectionDetails.backgroundColor = [UIColor whiteColor];
+    _connectionDetails.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.frame.size.width, 0.01f)];
+    [self.view addSubview:_connectionDetails];
 
 
 }
@@ -170,6 +171,7 @@
         [imageView addGestureRecognizer:swipeLeft];
         [imageView addGestureRecognizer:swipeRight];
     }
+    [self.view addSubview:_connectionDetails];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -192,7 +194,7 @@
     connection = activeObj.connection;
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     // Make cell unselectable
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
@@ -200,6 +202,9 @@
 	switch ( indexPath.row ) {
         case 0: {
 			cell.textLabel.text = connection.title;
+            cell.textLabel.numberOfLines = 0;
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+            cell.textLabel.minimumScaleFactor = 2;
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             cell.textLabel.textColor = [UIColor colorWithRed:0xE8/255.0f
                                                        green:0x49/255.0f
@@ -239,12 +244,17 @@
             cell.textLabel.textColor = [UIColor colorWithRed:0xb6/255.0f
                                                        green:0xe2/255.0f
                                                         blue:0xe9/255.0f alpha:1];
+            
+            
+
             UILabel *gift = [[UILabel alloc] initWithFrame:CGRectMake(65, 2, self.view.frame.size.width-70, 40)];
             gift.text = connection.summary;
             gift.numberOfLines = 0;
             gift.textColor = [UIColor colorWithRed:0x4d/255.0f
                                              green:0x4e/255.0f
                                               blue:0x4d/255.0f alpha:1];
+            gift.adjustsFontSizeToFitWidth = YES;
+            gift.minimumScaleFactor = 2;
             [cell addSubview:gift];
 			break ;
 		}
@@ -259,11 +269,15 @@
             why.textColor = [UIColor colorWithRed:0x4d/255.0f
                                             green:0x4e/255.0f
                                              blue:0x4d/255.0f alpha:1];
-            [why setLineBreakMode:NSLineBreakByWordWrapping];
+            why.adjustsFontSizeToFitWidth = YES;
+            why.minimumScaleFactor = 2;
+            
             [cell addSubview:why];
 			break ;
 		}
 	}
+    
+
     
 	// Textfield dimensions
 	tf.frame = CGRectMake(50, 12, self.view.frame.size.width-20, 30);
@@ -276,4 +290,6 @@
     
     return cell;
 }
+
+
 @end
