@@ -182,7 +182,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 5;
+    return 6;
 }
 
 
@@ -204,7 +204,7 @@
 			cell.textLabel.text = connection.title;
             cell.textLabel.numberOfLines = 0;
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
-            cell.textLabel.minimumScaleFactor = 2;
+            cell.textLabel.minimumScaleFactor = 0;
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             cell.textLabel.textColor = [UIColor colorWithRed:0xE8/255.0f
                                                        green:0x49/255.0f
@@ -254,7 +254,7 @@
                                              green:0x4e/255.0f
                                               blue:0x4d/255.0f alpha:1];
             gift.adjustsFontSizeToFitWidth = YES;
-            gift.minimumScaleFactor = 2;
+            gift.minimumScaleFactor = 0;
             [cell addSubview:gift];
 			break ;
 		}
@@ -270,9 +270,21 @@
                                             green:0x4e/255.0f
                                              blue:0x4d/255.0f alpha:1];
             why.adjustsFontSizeToFitWidth = YES;
-            why.minimumScaleFactor = 2;
+            why.minimumScaleFactor = 0;
             
             [cell addSubview:why];
+			break ;
+		}
+        case 5: {
+			
+            UIButton *report = [[UIButton alloc] initWithFrame:CGRectMake(35, 2, self.view.frame.size.width-70, 40)];
+            [report addTarget:self
+                           action:@selector(report)
+                 forControlEvents:UIControlEventTouchDown];
+            [report setTitle:@"Report Inappropriate Content" forState:UIControlStateNormal];
+            [report setFont:[UIFont systemFontOfSize:10]];
+            [report setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            [cell addSubview:report];
 			break ;
 		}
 	}
@@ -289,6 +301,14 @@
 	tf.delegate = self ;
     
     return cell;
+}
+
+-(void)report{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Report Content?"
+                                                    message:@"Thank you for reporting inappropriate content." delegate:self cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Yes", nil];
+    [alert show];
+    [TestFlight passCheckpoint:@"INAPPROPRIATE CONTENT"];
 }
 
 

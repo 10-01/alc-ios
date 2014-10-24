@@ -63,6 +63,7 @@
 		BD92381E1847D63100D8BDC1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD92381D1847D63100D8BDC1 /* CoreData.framework */; };
 		BD9238291847D93C00D8BDC1 /* personInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD9238271847D93C00D8BDC1 /* personInfo.xcdatamodeld */; };
 		BD9238301847DDEF00D8BDC1 /* alcLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD92382F1847DDEF00D8BDC1 /* alcLoginViewController.m */; };
+		BDAEDF841858EBD800C773C9 /* alcEULAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAEDF831858EBD800C773C9 /* alcEULAViewController.m */; };
 		BDCF34E318482432003ED63E /* alcAddFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCF34E218482432003ED63E /* alcAddFormViewController.m */; };
 		BDCF34E618482684003ED63E /* alcAddMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCF34E518482684003ED63E /* alcAddMapViewController.m */; };
 		BDCF34E9184826A1003ED63E /* alcAddMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDCF34E8184826A1003ED63E /* alcAddMediaViewController.m */; };
@@ -220,6 +221,8 @@
 		BD9238281847D93C00D8BDC1 /* personInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = personInfo.xcdatamodel; sourceTree = "<group>"; };
 		BD92382E1847DDEF00D8BDC1 /* alcLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alcLoginViewController.h; sourceTree = "<group>"; };
 		BD92382F1847DDEF00D8BDC1 /* alcLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alcLoginViewController.m; sourceTree = "<group>"; };
+		BDAEDF821858EBD800C773C9 /* alcEULAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alcEULAViewController.h; sourceTree = "<group>"; };
+		BDAEDF831858EBD800C773C9 /* alcEULAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alcEULAViewController.m; sourceTree = "<group>"; };
 		BDCF34E118482432003ED63E /* alcAddFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alcAddFormViewController.h; sourceTree = "<group>"; };
 		BDCF34E218482432003ED63E /* alcAddFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = alcAddFormViewController.m; sourceTree = "<group>"; };
 		BDCF34E418482684003ED63E /* alcAddMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alcAddMapViewController.h; sourceTree = "<group>"; };
@@ -387,6 +390,7 @@
 		BD9236C41846D2E100D8BDC1 /* alc-ios */ = {
 			isa = PBXGroup;
 			children = (
+				BDAEDF811858EBC700C773C9 /* eula */,
 				BD43037F185179E00036549A /* testflight */,
 				BD92382D1847DD8400D8BDC1 /* add */,
 				BD9238191847D05900D8BDC1 /* introduction */,
@@ -628,6 +632,15 @@
 			name = add;
 			sourceTree = "<group>";
 		};
+		BDAEDF811858EBC700C773C9 /* eula */ = {
+			isa = PBXGroup;
+			children = (
+				BDAEDF821858EBD800C773C9 /* alcEULAViewController.h */,
+				BDAEDF831858EBD800C773C9 /* alcEULAViewController.m */,
+			);
+			name = eula;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -798,6 +811,7 @@
 				BDCF3530184D7226003ED63E /* GTLAlittlecloserWebAlittlecloserApiMessagesConnectionAddRequest.m in Sources */,
 				BD9237401846DAC000D8BDC1 /* GTMHTTPFetcher.m in Sources */,
 				BD9237411846DAC000D8BDC1 /* GTMHTTPFetcherLogging.m in Sources */,
+				BDAEDF841858EBD800C773C9 /* alcEULAViewController.m in Sources */,
 				BDCF3538184D7226003ED63E /* GTLAlittlecloserWebAlittlecloserApiMessagesHSLocationAddRequest.m in Sources */,
 				BD92381018472A2F00D8BDC1 /* alcMapViewController.m in Sources */,
 				BD9237441846DAC000D8BDC1 /* GTMHTTPUploadFetcher.m in Sources */,

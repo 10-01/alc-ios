@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>323DB818-0A0B-4B09-9194-0643BF7125AE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>alc-ios</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BBA40BD1-12D7-4F62-9479-A5B2C5FBE034</key>
+		<string>https://github.com/hottubb/alc-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>alc-ios.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BBA40BD1-12D7-4F62-9479-A5B2C5FBE034</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hottubb/alc-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BBA40BD1-12D7-4F62-9479-A5B2C5FBE034</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BBA40BD1-12D7-4F62-9479-A5B2C5FBE034</string>
+			<key>IDESourceControlWCCName</key>
+			<string>alc-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

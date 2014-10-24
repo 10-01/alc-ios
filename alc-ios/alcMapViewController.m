@@ -47,7 +47,64 @@
     _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     _mapView.delegate = self;
     [mapContainer addSubview:_mapView];
+    [self LoadMapForUser];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)annotationView{
+    UIButton * disclosureButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [TestFlight passCheckpoint:@"MAP_CLICKED_POINT"];
+    [disclosureButton addTarget:self
+                         action:@selector(presentMoreInfo)
+               forControlEvents:UIControlEventTouchUpInside];
+    annotationView.rightCalloutAccessoryView = disclosureButton;
     
+    alcActiveConnection *activeObj=[alcActiveConnection getInstance];
+    for (GTLAlittlecloserWebAlittlecloserApiMessagesConnectionResponseMessage *connection in activeObj.connectionList.connections){
+        if ([connection.latitude doubleValue] == [[annotationView annotation] coordinate].latitude){
+            activeObj.connection = connection;
+        }
+    }
+}
+
+- (void)presentMoreInfo {
+    alcConnectionObjectViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"fullConnectionModal"];
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+	// Handle it, such as showing another view controller
+    NSLog(@"The");
+}
+
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
+    static NSString *identifier = @"MyAnnotation";
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    
+    alcMapAnnotation *myAnnotation = (alcMapAnnotation*) annotation;
+    
+    annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:myAnnotation reuseIdentifier:identifier];
+    
+    // Annotation's color
+    annotationView.pinColor = myAnnotation.pinColor;
+    annotationView.canShowCallout = YES;
+    myAnnotation.title = myAnnotation.title;
+    
+    return annotationView;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self LoadMapForUser];
+}
+
+-(void)LoadMapForUser{
     alcActiveConnection *activeObj=[alcActiveConnection getInstance];
     if (activeObj.connectionList == nil) {
         static GTLServiceAlittlecloser *service = nil;
@@ -118,55 +175,7 @@
             [_mapView addAnnotation:toAdd];
         }
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)annotationView{
-    UIButton * disclosureButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    [TestFlight passCheckpoint:@"MAP_CLICKED_POINT"];
-    [disclosureButton addTarget:self
-                         action:@selector(presentMoreInfo)
-               forControlEvents:UIControlEventTouchUpInside];
-    annotationView.rightCalloutAccessoryView = disclosureButton;
     
-    alcActiveConnection *activeObj=[alcActiveConnection getInstance];
-    for (GTLAlittlecloserWebAlittlecloserApiMessagesConnectionResponseMessage *connection in activeObj.connectionList.connections){
-        if ([connection.latitude doubleValue] == [[annotationView annotation] coordinate].latitude){
-            activeObj.connection = connection;
-        }
-    }
-}
-
-- (void)presentMoreInfo {
-    alcConnectionObjectViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"fullConnectionModal"];
-    
-    [self presentViewController:controller animated:YES completion:nil];
-}
-
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-	// Handle it, such as showing another view controller
-    NSLog(@"The");
-}
-
-- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
-    static NSString *identifier = @"MyAnnotation";
-    MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-    
-    alcMapAnnotation *myAnnotation = (alcMapAnnotation*) annotation;
-    
-    annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:myAnnotation reuseIdentifier:identifier];
-    
-    // Annotation's color
-    annotationView.pinColor = myAnnotation.pinColor;
-    annotationView.canShowCallout = YES;
-    myAnnotation.title = myAnnotation.title;
-    
-    return annotationView;
 }
 
 @end

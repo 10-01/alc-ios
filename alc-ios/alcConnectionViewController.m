@@ -24,8 +24,9 @@
 
 @interface alcConnectionViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *connectionCollectionView;
-@property (nonatomic,strong)NSArray* connectionsArray;
+@property (nonatomic,strong)NSMutableArray* connectionsArray;
 @property (nonatomic,strong)NSArray* prefsArray;
+@property(nonatomic)NSInteger cellCount;
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @end
@@ -46,10 +47,14 @@ NSString *kConnectionCellID = @"connectionResultCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 	// Do any additional setup after loading the view.
     alcAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     self.managedObjectContext = appDelegate.managedObjectContext;
     alcPersonInfo *personInfoObj=[alcPersonInfo getInstance];
+    
+    _cellCount = 0;
     
     //    Add Reload Controller to UI
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -223,6 +228,39 @@ NSString *kConnectionCellID = @"connectionResultCell";
     }];
     
 }
+
+//UNCOMMENTS ONCE THE SERVER CHANGES THE REQUESTS TO POSTS
+//- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+//    if(indexPath.row==_cellCount){
+//    static GTLServiceAlittlecloser *service = nil;
+//    if (!service) {
+//        service = [[GTLServiceAlittlecloser alloc] init];
+//        service.retryEnabled = YES;
+//        [GTMHTTPFetcher setLoggingEnabled:YES];
+//    }
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//        
+//     
+//        
+//        
+//    GTLQueryAlittlecloser *query = [GTLQueryAlittlecloser queryForConnectionsList];
+//    
+//    [service executeQuery:query completionHandler:^(GTLServiceTicket *ticket, GTLAlittlecloserWebAlittlecloserApiMessagesConnectionListResponse *object, NSError *error) {
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        NSArray *items = [object connections];
+//        
+//        _cellCount = _cellCount+[items count];
+//        
+//        alcActiveConnection *activeObj=[alcActiveConnection getInstance];
+//        activeObj.connectionList = object;
+//        
+//        [self.connectionsArray addObjectsFromArray:items];
+//        [self.connectionCollectionView reloadData];
+//    }];
+//    }
+//}
+
+
 
 -(void)reloadHomeViewController {
     [TestFlight passCheckpoint:@"ADD_NAVIGATION_BACK_TO_CONNECTIONS_SUCCESSFUL"];
